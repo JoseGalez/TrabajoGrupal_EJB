@@ -1,0 +1,142 @@
+Proceso sin_titulo
+	Definir s1p1g,s1p1c,s1p1j Como Entero; // SALA 1 proyeccion 1
+	Definir s1p2g,s1p2c,s1p2j Como Entero; // SALA 1 proyeccion 2
+	Definir s1p3g,s1p3c,s1p3j Como Entero; // SALA 1 proyeccion 3
+	Definir s2p1g,s2p1c,s2p1j Como Entero; // SALA 2 proyeccion 1
+	Definir s2p2g,s2p2c,s2p2j Como Entero; // SALA 2 proyeccion 2
+	Definir s2p3g,s2p3c,s2p3j Como Entero; // SALA 2 proyeccion 3
+	
+	Definir ts1p1,ts1p2,ts1p3 Como Entero; // totales SALA 1 proyeciones 1, 2, 3
+	Definir ts2p1,ts2p2,ts2p3 Como Entero; // totales SALA 2 proyeciones 1, 2, 3
+	Definir ts1,ts2 Como Entero; // personas totales en SALA 1, SALA 2
+	Definir tp1,tp2,tp3 Como Entero; // personas totales en proyeccion 1, 2, 3
+	Definir tc Como Entero; // total personas en el cine
+	
+  Definir rs1p1,rs1p2,rs1p3 Como Entero; // recaudacion SALA 1 proyecciones 1, 2, 3
+	Definir rs2p1,rs2p2,rs2p3 Como Entero; // recaudacion SALA 2 proyecciones 1, 2, 3
+	Definir rs1,rs2 Como Entero; // recaudacion SALA 1, SALA 2
+	Definir rp1,rp2,rp3 Como Entero; // recaudacion proyeciones 1, 2, 3
+	Definir rt Como Entero; // recaudacion total
+	
+  Definir pc,pj Como Entero; // porcentaje de personas con entrada cupon, jubilado
+	
+  Definir p,s Como Entero; // contador
+	
+  Para s<-1 Hasta 2 Hacer // BUCLE SALA
+		p <- 1;
+		Para p<-1 Hasta 3 Hacer // BUCLE PROYECCION
+			Escribir 'En la Sala ',s,' Proyeccion ',p;
+			Escribir '   Personas con entrada general';
+			Si s==1 Entonces
+				Si p==1 Entonces
+					Leer s1p1g;
+				SiNo
+					Si p==2 Entonces
+						Leer s1p2g;
+					SiNo
+						Leer s1p3g;
+					FinSi
+				FinSi
+			SiNo
+				Si p==1 Entonces
+					Leer s2p1g;
+				SiNo
+					Si p==2 Entonces
+						Leer s2p2g;
+					SiNo
+						Leer s2p3g;
+					FinSi
+				FinSi
+			FinSi
+			Escribir '   Personas con entrada cupon';
+			Si s==1 Entonces
+				Si p==1 Entonces
+					Leer s1p1c;
+				SiNo
+					Si p==2 Entonces
+						Leer s1p2c;
+					SiNo
+						Leer s1p3c;
+					FinSi
+				FinSi
+			SiNo
+				Si p==1 Entonces
+					Leer s2p1c;
+				SiNo
+					Si p==2 Entonces
+						Leer s2p2c;
+					SiNo
+						Leer s2p3c;
+					FinSi
+				FinSi
+			FinSi
+			Escribir '   Personas con entrada jubilado';
+			Si s==1 Entonces
+				Si p==1 Entonces
+					Leer s1p1j;
+				SiNo
+					Si p==2 Entonces
+						Leer s1p2j;
+					SiNo
+						Leer s1p3j;
+					FinSi
+				FinSi
+			SiNo
+				Si p==1 Entonces
+					Leer s2p1j;
+				SiNo
+					Si p==2 Entonces
+						Leer s2p2j;
+					SiNo
+						Leer s2p3j;
+					FinSi
+				FinSi
+			FinSi
+		FinPara
+	FinPara
+	
+  ts1p1 <- s1p1g+s1p1c+s1p1j;
+	ts1p2 <- s1p2g+s1p2c+s1p2j;
+	ts1p3 <- s1p3g+s1p3c+s1p3j;
+	ts2p1 <- s2p1g+s2p1c+s2p1j;
+	ts2p2 <- s2p2g+s2p2c+s2p2j;
+	ts2p3 <- s2p3g+s2p3c+s2p3j;
+	ts1 <- ts1p1+ts1p2+ts1p3;
+	ts2 <- ts2p1+ts2p2+ts2p3;
+	tp1 <- ts1p1+ts2p1;
+	tp2 <- ts1p2+ts2p2;
+	tp3 <- ts1p3+ts2p3;
+	tc <- ts1+ts2;
+
+	rs1p1 <- s1p1g*2200+s1p1c*(2200*0.5)+s1p1j*(2200*0.7);
+	rs1p2 <- s1p2g*2200+s1p2c*(2200*0.5)+s1p2j*(2200*0.7);
+	rs1p3 <- s1p3g*2200+s1p3c*(2200*0.5)+s1p3j*(2200*0.7);
+	rs2p1 <- s2p1g*2200+s2p1c*(2200*0.5)+s2p1j*(2200*0.7);
+	rs2p2 <- s2p2g*2200+s2p2c*(2200*0.5)+s2p2j*(2200*0.7);
+	rs2p3 <- s2p3g*2200+s2p3c*(2200*0.5)+s2p3j*(2200*0.7);
+
+	rs1 <- rs1p1+rs1p2+rs1p3;
+	rs2 <- rs2p1+rs2p2+rs2p3;
+	rp1 <- rs1p1+rs2p1;
+	rp2 <- rs1p2+rs2p2;
+	rp3 <- rs1p3+rs2p3;
+	rt <- rs1+rs2;
+
+	pc <- trunc(((s1p1c+s1p2c+s1p3c+s2p1c+s2p2c+s2p3c)/tc)*100);
+	pj <- trunc(((s1p1j+s1p2j+s1p3j+s2p1j+s2p2j+s2p3j)/tc)*100);
+
+	Escribir 'Cantidad total de personas en el cine: ',tc;
+	Escribir 'Cantidad total de personas en Sala 1: ',ts1;
+	Escribir 'Cantidad total de personas en Sala 2: ',ts2;
+	Escribir 'Cantidad total de personas en Proyección 1: ',tp1;
+	Escribir 'Cantidad total de personas en Proyección 2: ',tp2;
+	Escribir 'Cantidad total de personas en Proyección 3: ',tp3;
+	Escribir 'Recaudación total Sala 1: $',rs1;
+	Escribir 'Recaudación total Sala 2: $',rs2;
+	Escribir 'Recaudación total Proyección 1: $',rp1;
+	Escribir 'Recaudación total Proyección 2: $',rp2;
+	Escribir 'Recaudación total Proyección 3: $',rp3;
+	Escribir 'Recaudacion total en el dia: $',rt;
+	Escribir 'Porcentaje de personas con Entrada Cupón: ',pc,'%';
+	Escribir 'Porcentaje de personas con Entrada Jubilado: ',pj,'%';
+FinProceso
